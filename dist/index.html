@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons CDN Link-->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project.css">
+    
+    <title>ToDo List</title>
+</head>
+<body>
+
+
+
+
+    <div id="content"></div>
+    <!-- <div class="sidebarBtn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bx-list-check'></i>
+                <div class="logo_name">ToDo List</div>
+            </div>
+        </div>
+
+        <ul class="nav_list">
+            <li>
+                <a href="#">
+                    <span class="links_name">Home</span>
+                    
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="links_name">Today</span>
+                    
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="links_name">Week</span>
+                    
+                </a>
+            </li>
+            <li class="projects">
+                <a href="#" class="proj-btn">Projects
+                    <span class="fas fa-caret-down" id="down_arrow"></span>
+                    
+                </a>
+
+                <ul class="proj-list" data-lists>
+
+                </ul>
+                <form action = "" data-new-proj-form>
+                    <input type = "text" class = "new-list" data-new-proj-input
+                     placeholder="new project name" aria-label = "new project name"/>
+                     <button class = "btn-proj-list" aria-label="create new project">+</button>
+                </form>
+
+
+            </li>
+        </ul>
+    </nav> -->
+
+
+<template id = "task-template">
+    <div class="task">
+        <input type="checkbox" />
+        <label>
+            <span class="custom-checkbox"></span>
+        </label>
+
+        <div class="side-task-container">
+            <!-- <label for = "task-3">2/11/2022</label> -->
+            <div class="task-date" id="dueDate"></div>
+            <i class='bx bx-edit'></i>
+            <i class='bx bx-trash'></i>
+        </div>
+
+    </div>
+</template>
+
+
+</body>
+<script src = "./main.js"></script>
+</html>
