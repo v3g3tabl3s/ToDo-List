@@ -1,9 +1,11 @@
-import {$content} from "./index"
+/* eslint-disable no-plusplus */
+/* eslint-disable import/no-cycle */
+import { $content } from './index';
 
 const renderSidebar = (() => {
-    const $menu = document.createElement("div");
-    $menu.classList.add("menu-container");
-    $menu.innerHTML = `    <div class="sidebarBtn">
+  const $menu = document.createElement('div');
+  $menu.classList.add('menu-container');
+  $menu.innerHTML = `    <div class="sidebarBtn">
     <span class="fas fa-bars"></span>
 </div>
 <nav class="sidebar">
@@ -51,8 +53,9 @@ const renderSidebar = (() => {
 
         </li>
     </ul>
-</nav>`
-    $content.appendChild($menu);
+</nav>`;
+  $content.appendChild($menu);
 });
 
-export{renderSidebar};
+export { renderSidebar };
+export default renderSidebar;

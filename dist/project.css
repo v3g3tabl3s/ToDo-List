@@ -76,10 +76,12 @@
     justify-content: space-between;
     font-size: 20px;
     
-
 }
 
-.task::after{
+.task::after,
+.med-priority::after,
+.low-priority::after,
+.high-priority::after{
     content: "";
     position: absolute;
     right: 0;
@@ -89,6 +91,17 @@
     background: currentColor;
     opacity: 0.7;
 }
+
+.low-priority::after{
+    color: green
+}
+.med-priority::after{
+    color: yellow;
+}
+.high-priority::after{
+    color: red;
+}
+
 
 .side-task-container{
     display: inline-flex;
@@ -100,18 +113,19 @@
 }
 
 
-.bx{
+.bx-edit, .bx-trash{
     position: relative;
     top: 4px;
     cursor: pointer;
     scale: 1.3;
     opacity: 0;
     transition: opacity 200ms ease-in-out;
-    color: rgb(17, 70, 17);
+    color: var(--menu-bg);
 }
 
 
-.bx:hover{
+.bx-edit:hover,
+.bx-trash:hover{
     opacity: .3;
     transition: opacity 200ms ease-in-out;
 

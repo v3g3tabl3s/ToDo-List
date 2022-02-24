@@ -1,64 +1,31 @@
-import { $content } from "./index";
+/* eslint-disable import/no-cycle */
+import { $content } from './index';
 
 const renderProjects = (() => {
-    const $projContainer = document.createElement("div");
-    $projContainer.classList.add("main-container");
-    $projContainer.innerHTML = `    
+  const $projContainer = document.createElement('div');
+  $projContainer.classList.add('main-container');
+  $projContainer.innerHTML = `    
     <div class="todo-list" data-list-display-container>
         <div class="todo-header">
-            <h2 class="list-title" data-list-title>Test1</h2>
+            <h2 class="list-title" data-list-title>Example</h2>
             <p class="task-count" data-list-count>3 tasks remaining</p>
         </div>
         <div class="todo-body">
             <div class="tasks" data-tasks>
-                <div class="task">
-                    <input type="checkbox" id="task-1" />
-                    <label for="task-1">
-                        <span class="custom-checkbox">
-                        </span>Clean stuff
-                    </label>
-                    <div class="side-task-container">
-                        <!-- <label for = "task-3">2/11/2022</label> -->
-                        <div class="task-date">3/11/2022</div>
-                        <i class='bx bx-edit'></i>
-                        <i class='bx bx-trash'></i>
-                    </div>
-
-
-                </div>
-                <!-- task 1 -->
-                <div class="task">
-                    <input type="checkbox" id="task-2" />
-                    <label for="task-2">
-                        <span class="custom-checkbox">
-                        </span>Build Things
-                    </label>
-
-                    <div class="side-task-container">
-                        <!-- <label for = "task-3">2/11/2022</label> -->
-                        <div class="task-date">2/14/2022</div>
-                        <i class='bx bx-edit'></i>
-                        <i class='bx bx-trash'></i>
-                    </div>
-
-                </div>
-                <!-- task 2 -->
-                <div class="task">
-                    <input type="checkbox" id="task-3" />
-                    <label for="task-3">
-                        <span class="custom-checkbox"></span>Fix everything
-                    </label>
-
-
-                    <div class="side-task-container">
-                        <!-- <label for = "task-3">2/11/2022</label> -->
-                        <div class="task-date">2/11/2022</div>
-                        <i class='bx bx-edit'></i>
-                        <i class='bx bx-trash'></i>
-                    </div>
-
-                </div>
-                <!-- task 3 -->
+            <div class="task">
+            <input type="checkbox" id="task-1" />
+            <label for="task-1">
+                <span class="custom-checkbox">
+                </span>Clean stuff
+            </label>
+            <div class="side-task-container">
+                <!-- <label for = "task-3">2/11/2022</label> -->
+                <div class="task-date">3/11/2022</div>
+                <i class='bx bx-edit'></i>
+                <i class='bx bx-trash'></i>
+            </div>
+        </div>
+        <!-- task 1 -->
             </div>
             <div class="new-task-maker">
                 <form action="" data-new-task-form>
@@ -73,10 +40,10 @@ const renderProjects = (() => {
             </div>
 
         </div>
-    </div>`
+    </div>`;
 
-    $content.appendChild($projContainer);
-})
+  $content.appendChild($projContainer);
+});
 
-
-export {renderProjects};
+export { renderProjects };
+export default renderProjects;
