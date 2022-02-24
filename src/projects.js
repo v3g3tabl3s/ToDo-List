@@ -7,25 +7,11 @@ const renderProjects = (() => {
   $projContainer.innerHTML = `    
     <div class="todo-list" data-list-display-container>
         <div class="todo-header">
-            <h2 class="list-title" data-list-title>Example</h2>
+            <h2 class="list-title" data-list-title>Example, if here, broken</h2>
             <p class="task-count" data-list-count>3 tasks remaining</p>
         </div>
         <div class="todo-body">
             <div class="tasks" data-tasks>
-            <div class="task">
-            <input type="checkbox" id="task-1" />
-            <label for="task-1">
-                <span class="custom-checkbox">
-                </span>Clean stuff
-            </label>
-            <div class="side-task-container">
-                <!-- <label for = "task-3">2/11/2022</label> -->
-                <div class="task-date">3/11/2022</div>
-                <i class='bx bx-edit'></i>
-                <i class='bx bx-trash'></i>
-            </div>
-        </div>
-        <!-- task 1 -->
             </div>
             <div class="new-task-maker">
                 <form action="" data-new-task-form>

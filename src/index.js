@@ -84,6 +84,11 @@ $clearCompleteTasksBtn.addEventListener('click', () => {
 $deleteProjBtn.addEventListener('click', () => {
   projs = projs.filter((proj) => proj.id !== selectedProjId);
   selectedProjId = null;
+
+  if (projs.length === 0) {
+    const defaultProj = createProj('Default');
+    projs.push(defaultProj);
+  }
   saveAndRender();
 });
 
@@ -133,6 +138,8 @@ function save() {
 
 function render() {
   clearElement($projContainer);
+  // console.log(projs.length);
+
   renderProj();
   const selectedProj = projs.find((proj) => proj.id === selectedProjId);
 
@@ -148,7 +155,7 @@ function render() {
 }
 
 function renderTasks(selectedProj) {
-  selectedProj.tasks.forEach((task) => {
+  selectedProj.tasks.forEach((task, index, object) => {
     const $taskElement = document.importNode($taskTemplate.content, true);
     const $taskDiv = $taskElement.querySelector('div');
 
@@ -173,6 +180,16 @@ function renderTasks(selectedProj) {
     $label.append(task.name);
     const $taskDate = $taskElement.getElementById('dueDate');
     $taskDate.innerText = task.dueDate;
+
+    const $deleteTask = $taskElement.getElementById('taskDelete');
+    $deleteTask.addEventListener('click', () => {
+      $taskDiv.className = '';
+      // $taskDiv.classList.remove('low-priority')
+      object.pop(index);
+      save();
+      renderTaskCount(selectedProj);
+      clearElement($taskDiv);
+    });
 
     if (task.complete === true) { $taskDate.classList.add('checked'); }
     $tasksContainer.appendChild($taskElement);
@@ -233,78 +250,7 @@ function clearElement(element) {
   }
 }
 
-// render();
-
-const $projBtn = document.getElementsByClassName('proj-btn')[0];
-const $projMenu = document.getElementsByClassName('proj-list')[0];
-const $projList = Array.from(document.getElementsByClassName('proj-list')[0].children);
-const $downArrow = document.getElementById('down_arrow');
-const $navList = Array.from(document.getElementsByClassName('nav_list')[0].children);
-const $sidebarBtn = document.getElementsByClassName('sidebarBtn')[0];
-const $sidebar = document.getElementsByClassName('sidebar')[0];
-
-// sidebar menu on/off
-$sidebarBtn.onclick = () => {
-  if ($sidebar.className === 'sidebar') {
-    $sidebar.classList.add('show');
-    $sidebarBtn.classList.add('click');
-  } else {
-    $sidebar.classList.remove('show');
-    $sidebarBtn.classList.remove('click');
-  }
-};
-
-// dropdown menu for projects
-$projBtn.onclick = () => {
-  if ($projMenu.className === 'proj-list') {
-    $projMenu.classList.add('show');
-    $downArrow.classList.add('rotate');
-  } else {
-    $projMenu.classList.remove('show');
-    $downArrow.classList.remove('rotate');
-  }
-};
-
-for (let i = 0; i < $navList.length; i++) {
-  switch (i) {
-    case 0:
-    case 1:
-    case 2:
-      $navList[i].onclick = () => {
-        $navList.forEach((element) => {
-          element.classList.remove('active');
-        });
-        $navList[i].classList.add('active');
-        $projMenu.classList.remove('show');
-        $downArrow.classList.remove('rotate');
-      };
-      break;
-    case 3:
-      $navList[i].onclick = () => {
-        $navList.forEach((element) => {
-          element.classList.remove('active');
-        });
-        $navList[i].classList.add('active');
-
-        if ($projMenu.className === 'proj-list show') {
-          for (let j = 0; j < $projList.length; j++) {
-            $projList[j].onclick = () => {
-            //   console.log('proj item clicked');
-              $projList.forEach((element) => {
-                element.classList.remove('active');
-              });
-              $projList[j].classList.add('active');
-            };
-          }
-        } else {
-          $navList[i].classList.remove('active');
-        }
-      };
-      break;
-    default:
-      break;
-  }
-}
+render();
 
 export { $content };
 export default $content;

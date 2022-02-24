@@ -93,16 +93,20 @@
 }
 
 .low-priority::after{
-    color: green
+     color: green 
+    
 }
 .med-priority::after{
     color: yellow;
 }
 .high-priority::after{
     color: red;
+} 
+
+
+.bye::after{
+    display: none;
 }
-
-
 .side-task-container{
     display: inline-flex;
     color: inherit;
