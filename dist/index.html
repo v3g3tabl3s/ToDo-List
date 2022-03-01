@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="project.css">
-    
+    <link rel="stylesheet" href="editModal.css">
+     
     <title>ToDo List</title>
 </head>
 <body>
@@ -19,6 +20,7 @@
 
 
     <div id="content"></div>
+    <div class='' id="overlay"></div>
     <!-- <div class="sidebarBtn">
         <span class="fas fa-bars"></span>
     </div>
@@ -81,7 +83,7 @@
         <div class="side-task-container">
             <!-- <label for = "task-3">2/11/2022</label> -->
             <div class="task-date" id="dueDate"></div>
-            <i class='bx bx-edit'></i>
+            <i data-edit-modal-target="#editModal" class='bx bx-edit' id="taskEdit"></i>
             <i class='bx bx-trash' id="taskDelete"></i>
         </div>
 

@@ -4,6 +4,7 @@
 // import { getDate } from 'date-fns';
 import { renderSidebar } from './sidebar';
 import { renderProjects } from './projects';
+import { renderEditModal } from './editModal';
 
 // console.log("Testing todolist git");
 
@@ -25,6 +26,7 @@ const $taskTemplate = document.getElementById('task-template');
 const $newTaskForm = document.querySelector('[data-new-task-form]');
 const $newTaskInput = document.querySelector('[data-new-task-input]');
 const $clearCompleteTasksBtn = document.querySelector('[data-clear-complete-tasks-button]');
+const $overlay = document.getElementById('overlay');
 
 const LOCAL_STORAGE_LIST_KEY = 'task.projects';
 const LOCAL_STORAGE_SELECTED_PROJ_ID_KEY = 'task.selectedProjId';
@@ -181,6 +183,14 @@ function renderTasks(selectedProj) {
     const $taskDate = $taskElement.getElementById('dueDate');
     $taskDate.innerText = task.dueDate;
 
+    const $editTask = $taskElement.getElementById('taskEdit');
+    $editTask.addEventListener('click', () => {
+      const $editModal = document.getElementById('edit-modal');
+      renderEditModal();
+      openEditModal($editModal);
+      // console.log($closeEditModalBtns);
+    });
+
     const $deleteTask = $taskElement.getElementById('taskDelete');
     $deleteTask.addEventListener('click', () => {
       $taskDiv.className = '';
@@ -193,6 +203,19 @@ function renderTasks(selectedProj) {
 
     if (task.complete === true) { $taskDate.classList.add('checked'); }
     $tasksContainer.appendChild($taskElement);
+  });
+}
+
+function openEditModal($editModal) {
+  if ($editModal == null) return;
+
+  $editModal.classList.add('active');
+  $overlay.classList.add('active');
+  const $closeEditModalBtn = document.getElementById('close-btn');
+
+  $closeEditModalBtn.addEventListener('click', () => {
+    $editModal.classList.remove('active');
+    $overlay.classList.remove('active');
   });
 }
 
